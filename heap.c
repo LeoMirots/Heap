@@ -1,30 +1,30 @@
 #include "heap.h"
 
-element left(element i)
+number left(number i)
 {
 	return 2 * i;
 }
 
-element right(element i)
+number right(number i)
 {
 	return 2 * i + 1;
 }
 
-element parent(element i)
+number parent(number i)
 {
 	return i / 2;
 }
 
-void scambia(element *a, element *b)
+void scambia(number *a, number *b)
 {
-	element tmp;
+	number tmp = 0;
 	
-	AssignElement(tmp, *a);
-	AssignElement(*a, *b);
-	AssignElement(*b, tmp);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-void MoveUp(element *A, element i)
+void MoveUp(number *A, number i)
 {
 	while (i != 1 && A[i] > A[parent(i)])
 	{
@@ -33,9 +33,9 @@ void MoveUp(element *A, element i)
 	}
 }
 
-void heapify(element *A, element i, size_t heap_size)
+void heapify(number *A, number i, size_t heap_size)
 {
-	element l, r, largest;
+	number l, r, largest;
 	l = left(i);
 	r = right(i);
 	largest = i;
@@ -48,20 +48,19 @@ void heapify(element *A, element i, size_t heap_size)
 	if (largest != i)
 	{
 		scambia(&A[i], &A[largest]);
-		if (i != 1)
-			heapify(A, parent(largest), heap_size);
+		heapify(A, largest, heap_size);
 	}
 }
 
-void build_heap(element *A, size_t heap_size)
+void build_heap(number *A, size_t heap_size)
 {
 	for (size_t i = heap_size / 2; i >= 1; --i)
 		heapify(A, i, heap_size);
 }
 
-void heapsort(element *A, size_t size)
+void heapsort(number *A, size_t size)
 {
-	element i;
+	number i;
 	size_t heap_size;
 		
 	heap_size = size;
@@ -70,4 +69,14 @@ void heapsort(element *A, size_t size)
 		scambia(&A[1], &A[i]);
 		heapify(A, 1, --heap_size);
 	}
+}
+
+size_t posizione(number *A, number e, size_t heap_size)
+{
+	size_t i = 0;
+	while (A[i] != e && i <= heap_size)
+		++i;
+	if (i > heap_size)
+		abort();
+	return i + 1;
 }

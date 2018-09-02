@@ -1,11 +1,11 @@
 ﻿/*
-L'heap è un particolare insieme, costituito da elementi che dispongono di una
+L'heap è un particolare insieme, costituito da numberi che dispongono di una
 proprietà (chiave) sulla quale è definita una relazione di ordinamento totale
 (Code di priorità)
 
 Una d-heap e’ un albero radicato d-ario che:
 1. E’ quasi completo: completo almeno fino al penultimo livello
-2. Ogni nodo v contiene un elemento e ed una chiave x(v) sul cui dominio e’ definita una relazione di ordinamento totale
+2. Ogni nodo v contiene un numbero e ed una chiave x(v) sul cui dominio e’ definita una relazione di ordinamento totale
 3. Ogni nodo n diverso dalla radice ha la chiave non minore del padre x(v) >= x(parent(v))
 
 Dato un d-heap con n nodi, l’albero ha altezza O(logd n)
@@ -14,7 +14,7 @@ Dato un d-heap con n nodi, l’albero ha altezza O(logd n)
 
 Dato il padre i, i figli sono: d*i – d + 2, ..., d*i + 1
 dove d rappresenta il numero di rami per ogni nodo e i rappresenta la posizione
-dell'elemento di cui si stanno cercando i figli.
+dell'numbero di cui si stanno cercando i figli.
 Se ho un albero con d = 3, e voglio sapere i figli del nodo in posizione 2,
 questi si troveranno: 3*2 - 3 + 2, 3*2 - 3 + 3, 3*2 - 3 + 4 --> 3*2 - 1, 3*2, 3*2 + 1 --> 5, 6, 7;
 
@@ -24,15 +24,16 @@ Questa libreria mostra delle funzioni per gestire un binary-heap, dove ogni nodo
 #if !defined HEAP_H
 #define HEAP_H
 #include <stdlib.h>
-#include "el.h"
 
-#define MAX 20
+typedef int number;
 
-element left(element i);
-element right(element i);
-void scambia(element *a, element *b);
-void MoveUp(element *A, element i);						/*Porta in alto l'elemento i nell'heap A, finchè parent(i) non è > i;*/
-void heapify(element *A, element i, size_t heap_size);	/*Posiziona l'elemento i in modo che rispetti le propietà dell'heap nell'array A;*/
-void build_heap(element *A, size_t heap_size);			/*Controlla e corregge la posizione di ogni elemento affinchè tutto l'array A rispetti le propietà della coda heap*/
+extern number left(number i);
+extern number right(number i);
+extern void scambia(number *a, number *b);
+extern void MoveUp(number *A, number i);								/*Porta in alto l'numbero i nell'heap A, finchè parent(i) non è > i;*/
+extern void heapify(number *A, number i, size_t heap_size);			/*Posiziona l'numbero i in modo che rispetti le propietà dell'heap nell'array A;*/
+extern void build_heap(number *A, size_t heap_size);					/*Controlla e corregge la posizione di ogni numbero affinchè tutto l'array A rispetti le propietà della coda heap*/
+extern void heapsort(number *A, size_t heap_size);					/*Ordina il vettore usando heapify, ha la stessa velocità del quicksort*/
+extern size_t posizione(number *A, number e, size_t heap_size);		/*Ritorna l'indice dell'numbero e nell'array A, ritorna -1 se non trova l'numbero;*/
 
 #endif //HEAP_H
