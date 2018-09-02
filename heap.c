@@ -58,10 +58,12 @@ void build_heap(number *A, size_t heap_size)
 		heapify(A, i, heap_size);
 }
 
-void heapsort(number *A, size_t size)
+void heapsort(number *A, size_t size)		/*Scambia l'elemento + grande in cima al vettore heap con l'elemento + piccolo alla fine, esclude l'ultimo elemento(che è diventato il + grande) e ripete l'operazione con il vettore parziale senza considerare l'ultimo elemento;*/
 {
 	number i;
 	size_t heap_size;
+	
+	build_heap(A, size);
 		
 	heap_size = size;
 	for (i = size; i >= 2; --i)
