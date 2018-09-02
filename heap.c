@@ -42,7 +42,7 @@ void heapify(number *A, number i, size_t heap_size)
 
 	if (l <= heap_size && A[l] > A[i])
 		largest = l;
-	if (r <= heap_size && A[r] > A[i])
+	if (r <= heap_size && A[r] > A[i] && A[r] > A[largest])
 		largest = r;
 
 	if (largest != i)
@@ -69,14 +69,4 @@ void heapsort(number *A, size_t size)
 		scambia(&A[1], &A[i]);
 		heapify(A, 1, --heap_size);
 	}
-}
-
-size_t posizione(number *A, number e, size_t heap_size)
-{
-	size_t i = 0;
-	while (A[i] != e && i <= heap_size)
-		++i;
-	if (i > heap_size)
-		abort();
-	return i + 1;
 }

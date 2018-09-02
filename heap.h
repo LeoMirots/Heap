@@ -30,10 +30,9 @@ typedef int number;
 extern number left(number i);
 extern number right(number i);
 extern void scambia(number *a, number *b);
-extern void MoveUp(number *A, number i);								/*Porta in alto l'numbero i nell'heap A, finchè parent(i) non è > i;*/
-extern void heapify(number *A, number i, size_t heap_size);			/*Posiziona l'numbero i in modo che rispetti le propietà dell'heap nell'array A;*/
-extern void build_heap(number *A, size_t heap_size);					/*Controlla e corregge la posizione di ogni numbero affinchè tutto l'array A rispetti le propietà della coda heap*/
+extern void MoveUp(number *A, number i);							/*Porta in alto il numero i nell'heap A, finchè parent(i) non è > i;*/
+extern void heapify(number *A, number i, size_t heap_size);			/*Posiziona il numero i in modo che rispetti le propietà dell'heap nell'array A;*/
+extern void build_heap(number *A, size_t heap_size);				/*Controlla e corregge la posizione di ogni numero affinchè tutto l'array A rispetti le propietà della coda heap*/
 extern void heapsort(number *A, size_t heap_size);					/*Ordina il vettore usando heapify, ha la stessa velocità del quicksort*/
-extern size_t posizione(number *A, number e, size_t heap_size);		/*Ritorna l'indice dell'numbero e nell'array A, ritorna -1 se non trova l'numbero;*/
 
 #endif //HEAP_H
