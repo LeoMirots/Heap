@@ -5,7 +5,7 @@ proprietà (chiave) sulla quale è definita una relazione di ordinamento total
 
 Una d-heap e’ un albero radicato d-ario che:
 1. E’ quasi completo: completo almeno fino al penultimo livello
-2. Ogni nodo v contiene un numbero e ed una chiave x(v) sul cui dominio e’ definita una relazione di ordinamento totale
+2. Ogni nodo v contiene un numero e ed una chiave x(v) sul cui dominio e’ definita una relazione di ordinamento totale
 3. Ogni nodo n diverso dalla radice ha la chiave non minore del padre x(v) >= x(parent(v))
 
 Dato un d-heap con n nodi, l’albero ha altezza O(logd n)
